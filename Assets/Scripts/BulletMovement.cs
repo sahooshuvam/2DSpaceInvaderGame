@@ -14,8 +14,15 @@ public class BulletMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
+        transform.Translate(0, bulletSpeed * Time.deltaTime, 0);    
         if (transform.position.y > 4.5f)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bunker")
         {
             Destroy(gameObject);
         }
